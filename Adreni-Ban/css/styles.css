@@ -1,0 +1,77 @@
+.controles {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.label {
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+.textbox {
+  border-radius: 5px;
+}
+
+.btn-agregar {
+  border-radius: 25px;
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-eliminar {
+  border-radius: 25px;
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.overflow-auto {
+  overflow: auto !important;
+}
+
+.boards {
+  display: inline-flex;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  border-top: 1 px solid rgb(212, 212, 212);
+  margin-top: 5px;
+}
+
+.board {
+  background: #e6e7e9;
+  margin: 0.5rem;
+  padding: 0px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.board h3 {
+  padding: 16px !important;
+  min-width: 300px;
+  width: 100%;
+  margin: 0;
+  background-color: #ffff;
+  font-weight: bold;
+  font-size: 18px;
+  color: #1c1c2e;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.dropzone {
+  padding: 16px;
+  min-width: 300px;
+  min-height: 100px;
+  justify-content: center;
+  height: 100%;
+}
