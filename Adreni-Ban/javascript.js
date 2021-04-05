@@ -3,7 +3,8 @@
 $(document).ready(() => {
   $("#add").click(() => {
     agregarAlToDo();
-    drag();
+    const NewID = parseInt($("#add").val());
+    drag(NewID);
     limpiarCampos();
     
   });
@@ -16,7 +17,9 @@ function agregarAlToDo() {
     var div = document.getElementById("DropToDo");
 
     var crearDiv = document.createElement("div");
-    crearDiv.id = parseInt($("#add").val());
+    const NewID = parseInt($("#add").val());
+    console.log(NewID)
+    crearDiv.id = NewID;
     crearDiv.draggable = "true";
     crearDiv.className = "draggeable";
     crearDiv.style.borderRadius = "10px";
@@ -28,6 +31,7 @@ function agregarAlToDo() {
     crearDiv.style.textAlign = "center";
     crearDiv.style.backgroundColor = "#FFFF";
     crearDiv.style.cursor = "grab";
+
     var crearH2 = document.createElement("h2");
     crearH2.innerText = $("#input-title").val();
     var descrip = document.createElement("p");
@@ -45,8 +49,9 @@ function agregarAlToDo() {
   }
 }
 
-function drag() {
-  const draggableElement = document.querySelector(".draggeable");
+function drag(id) {
+  const draggableElement = document.getElementById(id)
+  console.log("el draggableeleent",draggableElement);
       draggableElement.addEventListener("dragstart", (e) => {
         console.log(e);
         e.dataTransfer.setData("text/plain", draggableElement.id);
@@ -61,6 +66,8 @@ function drag() {
           e.preventDefault();
   
           const droppedElementId = e.dataTransfer.getData("text/plain");
+          console.log("el dropped element")
+          console.log(document.getElementById(droppedElementId))
           console.log(document.getElementById(droppedElementId));
           const droppedElement = document.getElementById(droppedElementId);
           dropZone.appendChild(droppedElement);
