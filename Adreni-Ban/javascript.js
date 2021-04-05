@@ -8,6 +8,7 @@ $(document).ready(() => {
     limpiarCampos();
     
   });
+
 });
 
 /* Agregar ticket */
@@ -18,7 +19,6 @@ function agregarAlToDo() {
 
     var crearDiv = document.createElement("div");
     const NewID = parseInt($("#add").val());
-    console.log(NewID)
     crearDiv.id = NewID;
     crearDiv.draggable = "true";
     crearDiv.className = "draggeable";
@@ -34,12 +34,29 @@ function agregarAlToDo() {
 
     var crearH2 = document.createElement("h2");
     crearH2.innerText = $("#input-title").val();
+
     var descrip = document.createElement("p");
     descrip.innerText = $("#input-descrip").val();
+    descrip.style.marginBottom = "0rem";
+
+    var boton = document.createElement("button");
+    boton.className = "Eliminar";
+    boton.type = "submit";
+    boton.innerText = "-";
+    boton.style.borderRadius = "50%";
+    boton.style.border = "1px solid red";
+    boton.style.backgroundColor = "#dc3545";
+    boton.style.color = "white";
+    boton.title = "Eliminar";
+    boton.style.marginLeft = "265px";
+    boton.style.marginBottom = "5px";
+    boton.onclick = eliminar(NewID);
 
     div.append(crearDiv);
     crearDiv.append(crearH2);
     crearDiv.append(descrip);
+    crearDiv.append(boton);
+
   } else {
     if ($("#input-title").val() == "") {
       return alert("Debe ingresar un título");
@@ -51,9 +68,7 @@ function agregarAlToDo() {
 
 function drag(id) {
   const draggableElement = document.getElementById(id)
-  console.log("el draggableeleent",draggableElement);
       draggableElement.addEventListener("dragstart", (e) => {
-        console.log(e);
         e.dataTransfer.setData("text/plain", draggableElement.id);
       });
   
@@ -66,9 +81,6 @@ function drag(id) {
           e.preventDefault();
   
           const droppedElementId = e.dataTransfer.getData("text/plain");
-          console.log("el dropped element")
-          console.log(document.getElementById(droppedElementId))
-          console.log(document.getElementById(droppedElementId));
           const droppedElement = document.getElementById(droppedElementId);
           dropZone.appendChild(droppedElement);
         });
@@ -82,6 +94,10 @@ function generarIds() {
   var val = document.getElementById("add");
   val.setAttribute("value",divs );
 
+}
+
+function eliminar(div) {
+  console.log(div);
 }
 
 function limpiarCampos() {
